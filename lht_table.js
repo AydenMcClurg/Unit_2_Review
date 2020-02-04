@@ -10,9 +10,9 @@
 
 	
 */
-
+//sets date
 var thisDay = new Date("August 30, 2018");
-
+// makes the first part of the table by adding Html code
    var tableHTML = "<table id='eventTable'>";
    tableHTML += "<caption>Upcoming Events</caption>";
    tableHTML +="<tr>";
@@ -22,12 +22,13 @@ var thisDay = new Date("August 30, 2018");
    tableHTML +="</tr>";
    var endDate = new Date(thisDay.getTime() + (14 * 24 * 60 * 60 * 1000));
 
+   //arry which gives descriptions, time, date, and prices for events
    for(var i = 0; i < eventDates.length; i++){
       var eventDate = new Date(eventDates[i]);
       var eventDay = eventDate.toDateString();
       var eventTime = eventDate.toLocaleTimeString();
    
-
+//add this the Html code only if it set between the week it wants
       if(thisDay <= eventDate && eventDate <= endDate){
          tableHTML += "<tr>";
          tableHTML += "<td>" + eventDay + "@" + eventTime + "</td>";
@@ -38,5 +39,6 @@ var thisDay = new Date("August 30, 2018");
       
    }
 }
+//close the table and changes the html code of the element id eventList
 tableHTML += "</table>"
       document.getElementById("eventList").innerHTML = tableHTML;
